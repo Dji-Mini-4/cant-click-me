@@ -1,0 +1,112 @@
+/* Hello */
+
+/* Base styles */
+body {
+  background-color: black;
+  color: white;
+  font-family: "Consolas", monospace;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+hr {
+  width: 100vw;
+  position: relative;
+  border: none;
+  border-top: 1px solid white;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* dontclick button styling */
+.round-btn {
+  user-select:none;
+  border-radius: 5px;
+  height: 30px;
+  min-width: 160px;
+  font-family: "Nata Sans", sans-serif;
+  font-size: 0.875rem; /* 14px */
+  padding: 0 16px;
+  cursor: pointer;
+  background-color: #3a6;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.round-btn:hover {
+  background-color: #2e5;
+}
+
+/* Dark mode toggle container */
+#dark-mode-box {
+  position: absolute;
+  transform:scale(1.05);
+  top: 7px;
+  right: 10px;
+  background: #222;
+  border: 1px solid #888;
+  border-radius: 6px;
+  padding: 4px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  min-width: 100px;
+  font-size: 1.1rem;
+}
+
+
+/* Label styling */
+#dark-mode-box label {
+  font-size: 1.1rem;
+  margin-right: 8px;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+/* Checkbox styling */
+#dark-mode-box input[type="checkbox"] {
+  width: 1.2em;
+  height: 1.2em;
+  accent-color: #3a6;
+  vertical-align: middle;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* ask-new-timeout settings */
+#dark-mode-box #ask-new-timeout {
+    border-radius: 5px;
+}
+
+#dark-mode-box #ask-new-timeout:hover {
+    transform: scale(1.03); /* grow BIGGER */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Timer box */
+#timer {
+  min-height: 1.5em;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  #dark-mode-box {
+    padding: 4px 12px;
+    font-size: 1rem;
+  }
+
+  .round-btn {
+    min-width: 120px;
+    font-size: 0.75rem;
+  }
+
+}

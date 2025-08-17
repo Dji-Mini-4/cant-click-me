@@ -6,6 +6,14 @@ let just_clicked = false;
 let start = null;
 let lastElapsed = null;
 
+function init() {
+    let start = document.createElement('h1');
+    start.innerHTML = "<b>Starting game...</b>";
+    document.body.appendChild(start)
+
+    setTimeout(() => {ask_timeout(); document.body.removeChild(start)}, 3000)
+}
+
 function ask_timeout() {
     while (true) {
         let temp_timeout = prompt("Enter delay in milliseconds before the alert fires: (100 🏃 to 1000 🐢)\nOr press Cancel to close the window.");
@@ -31,7 +39,7 @@ function ask_timeout() {
     }
     document.getElementById('teleportation').innerHTML = `P.S. You have <strong>${timeout}ms</strong> before the alert fires.`
 }
-window.onload = ask_timeout;
+window.onload = init;
 
 function block() {
     if (!timeout) return;

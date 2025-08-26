@@ -4,14 +4,45 @@ let timeout = null;
 let timerInterval = null;
 let just_clicked = false;
 let start = null;
-let lastElapsed = null;
+let lastElapsed = null; 
+const onHoverList = [
+    "Hey!",
+    "<i>Uh oh...</i>",
+    "<b>WHAT ARE YOU THINKING???</b>",
+    "You'll surely regret what's <i>coming...</i>",
+    "You're making a <b>MISTAKE!!!</b>"
+];
+
+const onClickList = [
+    "<b>NO!!!!!!! 😭</b>",
+    "<i>Shoot...</i>",
+    "<b>HOW DO YOU DID <i>THAT???</i> 😱</b>",
+    "<i>*cries in horror*</i>",
+    "<b>%*@&$%!&@!!!!!!! 🫣</b>"
+];
 
 function init() {
-    let start = document.createElement('h1');
-    start.innerHTML = "<b>Starting game...</b>";
-    document.body.appendChild(start)
+    // Hide all existing children
+    for (const child of document.body.children) {
+        child.style.display = "none";
+    }
 
-    setTimeout(() => {ask_timeout(); document.body.removeChild(start)}, 3000)
+    // Create and show "Starting game..." message
+    const h1 = document.createElement('h1');
+    h1.textContent = "Starting game...";
+    h1.style.fontSize = "1.5em";
+    h1.style.textAlign = "center";
+    h1.style.marginTop = "20vh";
+    document.body.appendChild(h1);
+
+    // Wait 3 seconds, then remove message and show original content
+    setTimeout(() => {
+        h1.remove();
+        for (const child of document.body.children) {
+            child.style.display = ""; // Restore original display
+        }
+        ask_timeout();
+    }, 3000);
 }
 
 function ask_timeout() {
@@ -39,10 +70,12 @@ function ask_timeout() {
     }
     document.getElementById('teleportation').innerHTML = `P.S. You have <strong>${timeout}ms</strong> before the alert fires.`
 }
-window.onload = init;
+document.addEventListener("DOMContentLoaded", init)
 
 function block() {
     if (!timeout) return;
+
+    document.getElementById("header").innerHTML = onHoverList[Math.floor(Math.random() * onHoverList.length)];
 
     start = performance.now(); // <-- Store start time
     const display = document.getElementById("timer");
@@ -109,7 +142,9 @@ function stopTimer() {
 function clearTimerOnMouseLeave() {
     if (!btn_clicked) {
         stopTimer();
-        document.getElementById("timer").textContent = ""
+        document.getElementById("timer").textContent = "";
+        // Only reset header if button hasn't been clicked
+        document.getElementById("header").innerHTML = "Betcha can't click the button!";
     }
 }
 
@@ -136,6 +171,8 @@ function after_click() {
         "<b><i>YOU’VE BEEN LOGGED... FOR ETERNAL JUDGMENT.</i></b>",
         "<b><i>THE CLICK HAS BEEN RECORDED IN THE BOOK OF SHAME.</i></b>"
     ];
+
+    document.getElementById("header").innerHTML = onClickList[Math.floor(Math.random() * onClickList.length)];
 
     // 🧹 Clear previous dramatic messages only (not buttons)
     document.querySelectorAll('.dynamic-msg').forEach(el => el.remove());
@@ -205,6 +242,7 @@ function dark_mode() {
 
 function reset() {
     btn_clicked = false;
+    document.getElementById("header").innerHTML = "Betcha can't click the button!";
     document.querySelectorAll('.dynamic-msg').forEach(el => el.remove());
     document.querySelectorAll('button:not(:first-of-type)').forEach(el => el.remove());
 }

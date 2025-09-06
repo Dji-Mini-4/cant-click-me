@@ -18,7 +18,7 @@ const onClickList = [
     "<i>Shoot...</i>",
     "<b>HOW DO YOU DID <i>THAT???</i> 😱</b>",
     "<i>*cries in horror*</i>",
-    "<b>%*@&$%!&@!!!!!!! 👿</b>"
+    "<b>%*@&$%!&@!!!!!!! 🤯</b>"
 ];
 
 function init() {

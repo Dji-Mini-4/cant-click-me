@@ -3,6 +3,7 @@
 This is my first web page on the internet... please let me know if there are issues
 
 ### How to play  
+---
 So the goal is to click on the button... simple, right?  
 BUT, if you hover on top of the button too long, an alert would pop up, therfore you have to close that alert and
 try again.  

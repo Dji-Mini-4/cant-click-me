@@ -10,4 +10,6 @@ try again.
 The delay for the alert is set in the start, but a button on the top-right can reset it to a different amount.
 Hope you'll have fun!  
 ---
+Also cloud implementation is coming up! You can make highscores, and people _hopefully_ can see you on the rank list!
+---
 **&copy; Nobody. Feel free to steal. :)**
